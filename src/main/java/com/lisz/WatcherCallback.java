@@ -25,7 +25,7 @@ public class WatcherCallback implements AsyncCallback.StringCallback, AsyncCallb
     @Override
     public void processResult(int rc, String path, Object ctx, List<String> children, Stat stat) {
         System.out.println(threadName + " is looking for lock");
-        Collections.sort(children);
+        Collections.sort(children); //没有sort这一句的话输出的时候会发现不是按照create节点的顺序干活
         int index = children.indexOf(pathName.substring(1));
         if (index == 0) {
             System.out.println(threadName + " is the first and gets the lock");
